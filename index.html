@@ -159,13 +159,6 @@
   }
 
   /* ===== スライド3: LINEデモ ===== */
-  .phone-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    align-items: flex-start;
-  }
-
   .phone-item {
     text-align: center;
   }
@@ -413,42 +406,6 @@
   .badge-tri { color: #E65100; }
   .badge-warn { color: #B71C1C; font-weight: 700; }
 
-  /* ===== スライド7: 料金比較 ===== */
-  .price-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    margin-bottom: 24px;
-  }
-
-  .price-table th {
-    padding: 14px 16px;
-    text-align: center;
-    font-size: 13px;
-  }
-
-  .price-table th:first-child { text-align: left; }
-
-  .price-table td {
-    padding: 12px 16px;
-    border-top: 1px solid #EEE;
-    text-align: center;
-    vertical-align: top;
-  }
-
-  .price-table td:first-child { text-align: left; font-size: 13px; color: var(--gray); }
-
-  .col-ours { background: #FFF8F0; }
-  .col-ours th { background: var(--brown); color: var(--white); border-radius: 8px 8px 0 0; }
-  .col-ours td { color: var(--brown-dark); font-weight: 600; }
-
-  .col-lstep th { background: #EEE; border-radius: 8px 8px 0 0; }
-  .col-elme th { background: #EEE; border-radius: 8px 8px 0 0; }
-
-  .price-big { font-size: 20px; font-weight: 700; color: var(--brown); }
-  .price-small { font-size: 11px; color: var(--gray); }
-  .price-cross { color: #999; font-size: 12px; }
-
   .price-note {
     background: var(--gray-light);
     border-radius: 8px;
@@ -496,17 +453,6 @@
   .subsidy-row .label { color: var(--gray); }
   .subsidy-row .value { font-weight: 600; color: var(--brown-dark); }
 
-  .subsidy-result {
-    background: var(--brown-pale);
-    border-radius: 10px;
-    padding: 20px 28px;
-    text-align: center;
-  }
-
-  .subsidy-result .before { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
-  .subsidy-result .arrow { font-size: 24px; margin: 4px 0; }
-  .subsidy-result .after { font-size: 22px; font-weight: 700; color: var(--brown); }
-
   /* ===== スライド9: 向き不向き ===== */
   .fit-grid {
     display: grid;
@@ -546,7 +492,7 @@
 
   .fit-list li:last-child { border-bottom: none; }
 
-  /* ===== スライド10: CTA ===== */
+  /* ===== CTA ===== */
   .cta-slide {
     background: linear-gradient(135deg, var(--brown-dark), var(--brown));
     color: var(--white);
@@ -613,7 +559,6 @@
     .worry-grid { grid-template-columns: 1fr; }
     .phone-flow { grid-template-columns: 1fr 1fr; }
     .phone-arrow { display: none; }
-    .google-grid { grid-template-columns: 1fr; }
     .subsidy-grid { grid-template-columns: 1fr; }
     .fit-grid { grid-template-columns: 1fr; }
     .store-flow { grid-template-columns: 1fr; }
@@ -631,7 +576,7 @@
       LINE予約システム<br><span>月3,000円〜</span>で<br>予約・配信・管理をまるごと自動化
     </div>
     <div class="cover-desc">
-      Lステップ・エルメより<span style="color:#FFD700;font-weight:700;">90%安く</span>、予約システムまで込み。<br>
+      Lステップ・エルメの<span style="color:#FFD700;font-weight:700;">月額の1/5以下</span>で、予約システムまで込み。<br>
       Google環境で完結するから、サーバー代ほぼゼロ。
     </div>
     <div class="cover-tags">
@@ -902,7 +847,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- コスト -->
         <tr class="category-row"><td colspan="4">💰 コスト</td></tr>
         <tr>
           <td>初期費用（LINE設定＋予約込み）</td>
@@ -929,7 +873,6 @@
           <td><strong style="color:#B71C1C;">30,780円〜</strong></td>
         </tr>
 
-        <!-- 予約・基本機能 -->
         <tr class="category-row"><td colspan="4">📅 予約・基本機能</td></tr>
         <tr>
           <td>LINE内予約システム（LIFF）</td>
@@ -956,7 +899,6 @@
           <td><span class="badge-tri">△ 別途シナリオ設定要</span></td>
         </tr>
 
-        <!-- 配信機能 -->
         <tr class="category-row"><td colspan="4">📣 配信機能</td></tr>
         <tr>
           <td>誕生日メッセージ自動送信</td>
@@ -1001,7 +943,6 @@
           <td><span class="badge-ok">✅</span></td>
         </tr>
 
-        <!-- AI・自動返答 -->
         <tr class="category-row"><td colspan="4">🤖 AI・自動返答</td></tr>
         <tr>
           <td>FAQ自動返答（Gemini AI）<br><small>営業時間・メニュー・駐車場等の問い合わせ</small></td>
@@ -1010,7 +951,6 @@
           <td><span class="badge-tri">△ 別途設定・費用要</span></td>
         </tr>
 
-        <!-- データ・運用 -->
         <tr class="category-row"><td colspan="4">📊 データ・運用</td></tr>
         <tr>
           <td>顧客データ保有</td>
@@ -1051,10 +991,14 @@
     <div class="slide-title">補助金申請サポートは無料。<br>顧客の背中を押す最強の一手。</div>
     <div class="slide-subtitle">紹介先のお客様が「費用が…」と言ったら、ここを見せてください。</div>
     <div class="subsidy-grid">
-      <div class="subsidy-card">
-        <div class="subsidy-card-head">ベーシックプラン × 小規模持続化補助金</div>
+      <div class="subsidy-card" style="border-color:var(--brown);">
+        <div class="subsidy-card-head" style="display:flex; align-items:center; gap:10px;">
+          <span style="background:#fff; color:var(--brown); font-size:11px; font-weight:700; padding:2px 10px; border-radius:10px; flex-shrink:0;">★ おすすめ</span>
+          <span>ベーシック × 小規模事業者持続化補助金</span>
+        </div>
         <div class="subsidy-card-body">
-          <div class="subsidy-row"><span class="label">通常価格</span><span class="value">750,000円（LP・チラシ込み）</span></div>
+          <div class="subsidy-row"><span class="label">システム定価</span><span class="value">200,000円（LP・チラシ別）</span></div>
+          <div class="subsidy-row"><span class="label">補助金対象価格（LP・チラシその他込み）</span><span class="value">750,000円（満額の場合）</span></div>
           <div class="subsidy-row"><span class="label">補助金額</span><span class="value">最大500,000円</span></div>
           <div class="subsidy-row"><span class="label">実質負担</span><span class="value" style="color:var(--brown);font-size:16px;">250,000円〜</span></div>
           <div class="subsidy-row"><span class="label">月額</span><span class="value">3,000円/月</span></div>
@@ -1062,20 +1006,17 @@
         </div>
       </div>
       <div class="subsidy-card">
-        <div class="subsidy-card-head">プロプラン × 賃上げ枠・業務改善助成金</div>
+        <div class="subsidy-card-head">プロ × 業務改善助成金（90円コース・1人）</div>
         <div class="subsidy-card-body">
-          <div class="subsidy-row"><span class="label">通常価格</span><span class="value">3,000,000円（LP・設備込み）</span></div>
-          <div class="subsidy-row"><span class="label">補助金額</span><span class="value">最大2,000,000円</span></div>
-          <div class="subsidy-row"><span class="label">実質負担</span><span class="value" style="color:var(--brown);font-size:16px;">1,000,000円〜</span></div>
+          <div class="subsidy-row"><span class="label">システム定価</span><span class="value">500,000円（LP・チラシ別）</span></div>
+          <div class="subsidy-row"><span class="label">助成率</span><span class="value">4/5（最低賃金1,050円未満の場合）</span></div>
+          <div class="subsidy-row"><span class="label">計算式</span><span class="value">500,000円 × 4/5 = 400,000円</span></div>
+          <div class="subsidy-row"><span class="label">助成上限</span><span class="value">900,000円（上限内のため満額支給）</span></div>
+          <div class="subsidy-row"><span class="label">実質手出し</span><span class="value" style="color:var(--brown);font-size:16px;">100,000円</span></div>
           <div class="subsidy-row"><span class="label">月額</span><span class="value">5,500円/月</span></div>
           <div class="subsidy-row"><span class="label">対象</span><span class="value">従業員ありの店舗</span></div>
         </div>
       </div>
-    </div>
-    <div class="subsidy-result">
-      <div class="before">ホットペッパー月額3万円 × 12ヶ月 = 年間36万円</div>
-      <div class="arrow">↓</div>
-      <div class="after">このシステム 年間36,000〜66,000円。補助金込みなら初年度実質ほぼ同額。</div>
     </div>
   </div>
 </div>
@@ -1130,9 +1071,7 @@
     <div class="cta-card">
       <div class="cta-name">藤田 正伸</div>
       <div class="cta-info">
-        📧 masanobu@60p-net.com<br>
-        📞 090-2045-8356<br>
-        🔗 https://lit.link/fujishoten
+        📧 masanobu@60p-net.com
       </div>
     </div>
   </div>

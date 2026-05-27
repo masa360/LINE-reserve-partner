@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>パートナー契約ガイド｜藤田</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
+      background: #e8e8e8;
+      color: #1a1a1a;
+    }
+
+    /* A4 1枚 */
+    .page {
+      width: 794px;
+      height: 1123px;
+      margin: 0 auto 32px;
+      background: #fff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ヘッダー（1枚目のみ） */
+    .page-header {
+      background: #1a1a2e;
+      padding: 32px 48px 28px;
+      flex-shrink: 0;
+    }
+    .page-header .tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      color: #aaa;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .page-header h1 { color: #fff; font-size: 22px; font-weight: 900; line-height: 1.4; margin-bottom: 6px; }
+    .page-header p  { color: rgba(255,255,255,0.5); font-size: 13px; }
+
+    /* 2枚目用サブヘッダー */
+    .page-subheader {
+      background: #1a1a2e;
+      padding: 20px 48px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .page-subheader .sh-num {
+      width: 32px; height: 32px;
+      background: rgba(255,255,255,0.12);
+      color: #aaa; font-size: 12px; font-weight: 700;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .page-subheader .sh-title { color: #fff; font-size: 15px; font-weight: 800; }
+
+    /* コンテンツ */
+    .content {
+      flex: 1;
+      padding: 32px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      overflow: hidden;
+    }
+
+    .sec-title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: #999;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sec-title::after { content: ''; flex: 1; height: 1px; background: #e0e0e0; }
+
+    /* ===== 報酬 ===== */
+    .reward-box {
+      background: #fff0f6;
+      border: 1px solid #f8c8de;
+      border-radius: 14px;
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 0 28px;
+      align-items: center;
+    }
+    .reward-left { text-align: center; }
+    .reward-num  { font-size: 88px; font-weight: 900; color: #c8336a; line-height: 1; }
+    .reward-num span { font-size: 44px; }
+    .reward-label { font-size: 12px; color: #c8336a; font-weight: 700; margin-top: 4px; }
+    .reward-lead { font-size: 14px; color: #444; margin-bottom: 16px; font-weight: 600; }
+    .reward-cases { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .reward-case {
+      background: #fff;
+      border-radius: 10px;
+      padding: 14px 16px;
+      border: 1px solid #f0d0e0;
+    }
+    .reward-case .rc-plan   { font-size: 11px; color: #aaa; margin-bottom: 3px; }
+    .reward-case .rc-calc   { font-size: 12px; color: #888; margin-bottom: 6px; }
+    .reward-case .rc-result { font-size: 26px; font-weight: 900; color: #1a1a1a; }
+    .reward-notes {
+      grid-column: 1 / -1;
+      margin-top: 16px;
+      font-size: 12px;
+      color: #333;
+      line-height: 2;
+      border-top: 1px solid #f0d0e0;
+      padding-top: 14px;
+    }
+
+    /* ===== 役割分担 ===== */
+    .roles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .role-card { border-radius: 12px; padding: 20px 22px; }
+    .role-card.partner { background: #f0f4ff; border: 1px solid #c8d8f8; }
+    .role-card.fujita  { background: #fff0f6; border: 1px solid #f8c8de; }
+    .role-card .rc-title {
+      font-size: 14px; font-weight: 900; margin-bottom: 12px;
+      padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .role-card.partner .rc-title { color: #3460c8; }
+    .role-card.fujita  .rc-title { color: #c8336a; }
+    .role-card ul { list-style: none; display: grid; gap: 8px; }
+    .role-card ul li { font-size: 13px; color: #333; display: flex; gap: 8px; line-height: 1.5; }
+    .role-card ul li::before { content: '–'; color: #ccc; flex-shrink: 0; }
+
+    /* ===== フロー ===== */
+    .flow { display: grid; grid-template-columns: repeat(5, 1fr); align-items: start; gap: 0; }
+    .flow-step { text-align: center; position: relative; padding: 0 4px; }
+    .flow-step:not(:last-child)::after {
+      content: '→'; position: absolute; right: -6px; top: 16px;
+      font-size: 16px; color: #ccc; font-weight: 900;
+    }
+    .flow-num {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #1a1a2e; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 900; margin: 0 auto 8px;
+    }
+    .flow-who {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 10px; margin-bottom: 6px;
+    }
+    .flow-who.partner { background: #e8eeff; color: #3460c8; }
+    .flow-who.fujita  { background: #ffe8f2; color: #c8336a; }
+    .flow-title { font-size: 12px; font-weight: 800; margin-bottom: 4px; color: #1a1a1a; }
+    .flow-body  { font-size: 11px; color: #888; line-height: 1.55; }
+
+    /* ===== フォロー ===== */
+    .support-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .support-card { background: #f9f9f9; border: 1px solid #eee; border-radius: 10px; padding: 18px 18px; }
+    .support-card .sc-title { font-size: 13px; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; }
+    .support-card .sc-body  { font-size: 12px; color: #555; line-height: 1.75; }
+
+    /* ===== FAQ ===== */
+    .faq { display: grid; gap: 10px; }
+    .faq-item { background: #f9f9f9; border: 1px solid #eee; border-radius: 10px; padding: 16px 18px; }
+    .faq-q {
+      font-size: 14px; font-weight: 800; color: #1a1a1a;
+      margin-bottom: 8px; display: flex; gap: 8px;
+    }
+    .faq-q::before { content: 'Q.'; color: #c8336a; flex-shrink: 0; }
+    .faq-a { font-size: 12.5px; color: #555; line-height: 1.75; padding-left: 26px; }
+
+    /* フッター */
+    .page-footer {
+      background: #f2f2f2;
+      border-top: 1px solid #e0e0e0;
+      padding: 10px 48px;
+      font-size: 11px;
+      color: #aaa;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { margin-bottom: 0; page-break-after: always; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 説明資料へ戻るリンク -->
+<div style="max-width:900px; margin:0 auto; padding:12px 24px;">
+  <a href="presentation.html" style="font-size:13px; color:#8B6343; font-weight:700; text-decoration:none;">← パートナー向け説明資料に戻る</a>
+</div>
+
+<!-- ===== 1枚目 ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="tag">パートナー向け契約ガイド</div>
+    <h1>紹介だけで報酬が発生する。<br>納品・保守・フォローはすべて藤田が担当する。</h1>
+    <p>パートナーの仕事は「つなぐ」だけ。構築・対応は一切不要。</p>
+    <p style="margin-top:12px; color:rgba(255,255,255,0.35); font-size:12px;">合同会社TI　担当：藤田 正伸</p>
+  </div>
+
+  <div class="content">
+
+    <!-- 報酬 -->
+    <div>
+      <div class="sec-title">報酬体系</div>
+      <div class="reward-box">
+        <div class="reward-left">
+          <div class="reward-num">20<span>%</span></div>
+          <div class="reward-label">紹介料（初期構築費から）</div>
+        </div>
+        <div>
+          <div class="reward-lead">紹介成約1件につき、初期構築費の20%を支払う</div>
+          <div class="reward-cases">
+            <div class="reward-case">
+              <div class="rc-plan">ベーシック 成約時</div>
+              <div class="rc-calc">200,000円 × 20%</div>
+              <div class="rc-result">40,000円</div>
+            </div>
+            <div class="reward-case">
+              <div class="rc-plan">プロ 成約時</div>
+              <div class="rc-calc">500,000円 × 20%</div>
+              <div class="rc-result">100,000円</div>
+            </div>
+          </div>
+        </div>
+        <div class="reward-notes">
+          ※ 初期構築費の入金確認後、翌月末に振込　／　※ 月額保守費のシェアはなし。報酬は紹介時の一回のみ　／　※ ヒアリング・商談・契約・納品はすべて藤田が対応
+        </div>
+      </div>
+    </div>
+
+    <!-- 役割分担 -->
+    <div>
+      <div class="sec-title">役割分担</div>
+      <div class="roles">
+        <div class="role-card partner">
+          <div class="rc-title">パートナーがやること</div>
+          <ul>
+            <li>見込み顧客に声をかけて紹介する</li>
+            <li>藤田に連絡先・状況を共有する</li>
+            <li>以上</li>
+          </ul>
+        </div>
+        <div class="role-card fujita">
+          <div class="rc-title">藤田がやること（全部）</div>
+          <ul>
+            <li>ヒアリング・提案・見積もり</li>
+            <li>補助金申請サポート（無料）</li>
+            <li>契約・初期構築・納品</li>
+            <li>納品後の保守・変更対応</li>
+            <li>トラブル・障害一次対応</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- フロー -->
+    <div>
+      <div class="sec-title">受注から納品までの流れ</div>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-who partner">パートナー</div>
+          <div class="flow-title">紹介</div>
+          <div class="flow-body">連絡先と状況を藤田に共有</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-who fujita">藤田</div>
+          <div class="flow-title">ヒアリング・提案</div>
+          <div class="flow-body">業種・課題をヒアリングしてプラン提案</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-who fujita">藤田</div>
+          <div class="flow-title">契約・補助金</div>
+          <div class="flow-body">契約締結・補助金申請サポート開始</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-who fujita">藤田</div>
+          <div class="flow-title">構築・納品</div>
+          <div class="flow-body">構築・設定・動作確認・操作説明</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">5</div>
+          <div class="flow-who fujita">藤田</div>
+          <div class="flow-title">保守・継続</div>
+          <div class="flow-body">月額保守・変更・トラブル対応を継続</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>合同会社TI　藤田 正伸</span>
+    <span>1 / 2</span>
+  </div>
+</div>
+
+<!-- ===== 2枚目 ===== -->
+<div class="page">
+  <div class="page-subheader">
+    <div class="sh-num">2</div>
+    <div>
+      <div class="sh-title">納品後のフォロー体制 ／ よくある質問</div>
+      <div style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:2px;">合同会社TI　担当：藤田 正伸</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- フォロー体制 -->
+    <div>
+      <div class="sec-title">納品後のフォロー体制</div>
+      <div class="support-grid">
+        <div class="support-card">
+          <div class="sc-title">月次保守</div>
+          <div class="sc-body">予約システムの変更・修正、配信チューニング、デザイン制作（リッチメニュー・バナー等）、LP制作まで月額に含まれる。顧客は藤田に直接連絡するだけでいい。</div>
+        </div>
+        <div class="support-card">
+          <div class="sc-title">障害・トラブル対応</div>
+          <div class="sc-body">動作不良・予約が入らないなどの障害は藤田が一次対応する。パートナーに連絡が来た場合は藤田に転送するだけでよく、技術的な対応は不要。</div>
+        </div>
+        <div class="support-card">
+          <div class="sc-title">補助金申請サポート</div>
+          <div class="sc-body">小規模事業者持続化補助金などの申請サポートを無料で実施。書類作成の伴走から採択後の報告まで藤田が対応する。顧客にとって大きな安心材料になる。</div>
+        </div>
+        <div class="support-card">
+          <div class="sc-title">顧客との窓口</div>
+          <div class="sc-body">納品後の窓口は藤田。パートナーは紹介者として関係を保ちつつ、運用の手間はゼロ。顧客から感謝されるのはパートナーの役得。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div>
+      <div class="sec-title">よくある質問</div>
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-q">紹介後に商談がまとまらなかった場合は？</div>
+          <div class="faq-a">成約しなかった場合は報酬なし。無理な営業はしない方針で進める。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">技術的な説明は必要？</div>
+          <div class="faq-a">不要。「LINEで予約・リマインド・リピートを自動化できるシステムがある」とだけ伝えてもらえれば、あとは藤田が説明する。チラシ・資料も提供できる。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">紹介できる業種に制限はある？</div>
+          <div class="faq-a">ペットサロン・美容室・ネイル・まつエク・パーソナルトレーニング・社交ダンス・ヨガ・整体院など個人〜スタッフ5名以下の店舗・教室が対象。ホットペッパービューティー掲載店・複雑なシナリオが主軸の業種は対象外。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">報酬の支払いタイミングは？</div>
+          <div class="faq-a">顧客からの初期費用の入金確認後、翌月末に振込。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">パートナー契約に費用はかかる？</div>
+          <div class="faq-a">無料。契約書を締結して紹介を始めるだけ。</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>合同会社TI　藤田 正伸</span>
+    <span>2 / 2</span>
+  </div>
+</div>
+
+</body>
+</html>

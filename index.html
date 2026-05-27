@@ -159,6 +159,13 @@
   }
 
   /* ===== スライド3: LINEデモ ===== */
+  .phone-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    align-items: flex-start;
+  }
+
   .phone-item {
     text-align: center;
   }
@@ -199,36 +206,56 @@
   }
 
   /* ===== スライド4: 自動配信 ===== */
-  .line-msg-section {
+  .auto-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .line-screenshots {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .line-screenshot-item {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 6px;
   }
 
-  .line-msg-img {
-    border: 3px solid #DDD;
-    border-radius: 16px;
-    overflow: hidden;
-  }
-
-  .line-msg-img img {
+  .line-screenshot-item img {
     width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 12px;
+    border: 2px solid #DDD;
     display: block;
+  }
+
+  .line-screenshot-item span {
+    font-size: 11px;
+    color: #666;
+    text-align: center;
   }
 
   .auto-list {
     list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 24px;
   }
 
   .auto-list li {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
-    padding: 14px 0;
+    gap: 10px;
+    padding: 10px 0;
     border-bottom: 1px solid #EEE;
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 13px;
+    line-height: 1.4;
   }
 
   .auto-list li:last-child { border-bottom: none; }
@@ -406,6 +433,42 @@
   .badge-tri { color: #E65100; }
   .badge-warn { color: #B71C1C; font-weight: 700; }
 
+  /* ===== スライド7: 料金比較 ===== */
+  .price-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .price-table th {
+    padding: 14px 16px;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .price-table th:first-child { text-align: left; }
+
+  .price-table td {
+    padding: 12px 16px;
+    border-top: 1px solid #EEE;
+    text-align: center;
+    vertical-align: top;
+  }
+
+  .price-table td:first-child { text-align: left; font-size: 13px; color: var(--gray); }
+
+  .col-ours { background: #FFF8F0; }
+  .col-ours th { background: var(--brown); color: var(--white); border-radius: 8px 8px 0 0; }
+  .col-ours td { color: var(--brown-dark); font-weight: 600; }
+
+  .col-lstep th { background: #EEE; border-radius: 8px 8px 0 0; }
+  .col-elme th { background: #EEE; border-radius: 8px 8px 0 0; }
+
+  .price-big { font-size: 20px; font-weight: 700; color: var(--brown); }
+  .price-small { font-size: 11px; color: var(--gray); }
+  .price-cross { color: #999; font-size: 12px; }
+
   .price-note {
     background: var(--gray-light);
     border-radius: 8px;
@@ -453,6 +516,17 @@
   .subsidy-row .label { color: var(--gray); }
   .subsidy-row .value { font-weight: 600; color: var(--brown-dark); }
 
+  .subsidy-result {
+    background: var(--brown-pale);
+    border-radius: 10px;
+    padding: 20px 28px;
+    text-align: center;
+  }
+
+  .subsidy-result .before { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .subsidy-result .arrow { font-size: 24px; margin: 4px 0; }
+  .subsidy-result .after { font-size: 22px; font-weight: 700; color: var(--brown); }
+
   /* ===== スライド9: 向き不向き ===== */
   .fit-grid {
     display: grid;
@@ -492,7 +566,7 @@
 
   .fit-list li:last-child { border-bottom: none; }
 
-  /* ===== CTA ===== */
+  /* ===== スライド10: CTA ===== */
   .cta-slide {
     background: linear-gradient(135deg, var(--brown-dark), var(--brown));
     color: var(--white);
@@ -559,10 +633,12 @@
     .worry-grid { grid-template-columns: 1fr; }
     .phone-flow { grid-template-columns: 1fr 1fr; }
     .phone-arrow { display: none; }
+    .google-grid { grid-template-columns: 1fr; }
     .subsidy-grid { grid-template-columns: 1fr; }
     .fit-grid { grid-template-columns: 1fr; }
     .store-flow { grid-template-columns: 1fr; }
-    .line-msg-section { grid-template-columns: 1fr; }
+    .line-screenshots { grid-template-columns: 1fr; }
+    .auto-list { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -579,12 +655,18 @@
       Lステップ・エルメの<span style="color:#FFD700;font-weight:700;">月額の1/5以下</span>で、予約システムまで込み。<br>
       Google環境で完結するから、サーバー代ほぼゼロ。
     </div>
+    <div style="margin-bottom:12px;">
+      <span class="cover-tag" style="background:rgba(255,215,0,0.25); border:1px solid rgba(255,215,0,0.6); font-size:19px; padding:8px 24px; font-weight:800; letter-spacing:0.05em;">💴 紹介報酬 4〜10万円/件</span>
+    </div>
     <div class="cover-tags">
       <span class="cover-tag">📅 LINE予約</span>
       <span class="cover-tag">🔔 自動リマインド</span>
       <span class="cover-tag">🎁 リピート配信</span>
       <span class="cover-tag">🤖 AI自動返答</span>
       <span class="cover-tag">💰 補助金対応</span>
+    </div>
+    <div style="margin-top:20px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://masa360.github.io/line-reserve-user/" target="_blank" style="display:inline-block; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.4); color:#fff; font-size:13px; font-weight:700; padding:9px 20px; border-radius:8px; text-decoration:none;">📋 ユーザー向け説明資料</a>
     </div>
   </div>
 </div>
@@ -656,25 +738,43 @@
   </div>
   <div class="slide-body">
     <div class="section-badge">AUTO MESSAGE</div>
-    <div class="slide-title">設定したら、あとは自動で届く。</div>
-    <div class="slide-subtitle">誕生日も、リマインドも、呼び戻しも。全部自動。</div>
-    <div class="line-msg-section">
-      <div class="line-msg-img">
-        <img src="images/line_message_birthday_remind.png" alt="LINEメッセージ">
+    <div class="slide-title">手間ゼロで、必要なメッセージだけが届く。</div>
+    <div class="slide-subtitle">自動だから続く。お客様にとって必要なタイミングに、必要な内容だけを安定して届けます。<br><strong style="color:#E67E22;">📝 配信日・メッセージ内容・画像・クーポン — すべて自由に設定可能！</strong></div>
+    <div class="auto-layout">
+      <div class="line-screenshots">
+        <div class="line-screenshot-item">
+          <img src="images/line_reminder.jpg" alt="予約リマインド">
+          <span>予約リマインド</span>
+        </div>
+        <div class="line-screenshot-item">
+          <img src="images/line_message_birthday_monthly.png" alt="誕生月・母の日クーポン">
+          <span>誕生日・月次配信</span>
+        </div>
+        <div class="line-screenshot-item">
+          <img src="images/line_message_reactivation_birthday_today.png" alt="休眠・誕生日当日">
+          <span>休眠掘り起こし・誕生日当日</span>
+        </div>
       </div>
       <ul class="auto-list">
-        <li>
-          <span class="auto-icon">🎂</span>
-          <div class="auto-text">
-            <strong>誕生日メッセージ</strong>
-            <span>誕生日に自動でお祝いメッセージを送信</span>
-          </div>
-        </li>
         <li>
           <span class="auto-icon">🔔</span>
           <div class="auto-text">
             <strong>予約リマインド</strong>
-            <span>前日・当日に自動で来店をお知らせ</span>
+            <span>前日に自動で来店をお知らせ</span>
+          </div>
+        </li>
+        <li>
+          <span class="auto-icon">🎂</span>
+          <div class="auto-text">
+            <strong>誕生日メッセージ（月初・当日の2種）</strong>
+            <span>誕生月の月初と当日、2回のタイミングで自動送信</span>
+          </div>
+        </li>
+        <li>
+          <span class="auto-icon">📅</span>
+          <div class="auto-text">
+            <strong>月次キャンペーン配信</strong>
+            <span>母の日・年末など季節ごとのメッセージを自動送信</span>
           </div>
         </li>
         <li>
@@ -847,6 +947,7 @@
         </tr>
       </thead>
       <tbody>
+        <!-- コスト -->
         <tr class="category-row"><td colspan="4">💰 コスト</td></tr>
         <tr>
           <td>初期費用（LINE設定＋予約込み）</td>
@@ -862,7 +963,7 @@
         </tr>
         <tr>
           <td>月額（運用サポート費）<br><small style="color:#999;">※ フリーランスに運用代行を依頼した場合の相場</small></td>
-          <td class="col-ours"><span style="color:var(--brown);font-weight:700;">5,000〜7,500円</span><br><small>保守のみ・運用は自店で完結</small></td>
+          <td class="col-ours"><span style="color:var(--brown);font-weight:700;">5,000〜7,500円</span></td>
           <td>+30,000〜50,000円</td>
           <td>+30,000〜50,000円</td>
         </tr>
@@ -875,11 +976,12 @@
         <tr class="category-row"><td colspan="4">📊 コンサル・分析機能</td></tr>
         <tr>
           <td>独自月次レポート</td>
-          <td class="col-ours"><span class="badge-ok">✅ 込み</span></td>
-          <td><span class="badge-ng">❌ なし</span></td>
-          <td><span class="badge-ng">❌ なし</span></td>
+          <td class="col-ours"><span class="badge-tri">△ 別途 +5,000円</span></td>
+          <td><span class="badge-ok">✅</span></td>
+          <td><span class="badge-ok">✅</span></td>
         </tr>
 
+        <!-- 予約・基本機能 -->
         <tr class="category-row"><td colspan="4">📅 予約・基本機能</td></tr>
         <tr>
           <td>LINE内予約システム（LIFF）</td>
@@ -906,6 +1008,7 @@
           <td><span class="badge-tri">△ 別途シナリオ設定要</span></td>
         </tr>
 
+        <!-- 配信機能 -->
         <tr class="category-row"><td colspan="4">📣 配信機能</td></tr>
         <tr>
           <td>誕生日メッセージ自動送信</td>
@@ -927,9 +1030,15 @@
         </tr>
         <tr>
           <td>月次キャンペーン配信</td>
-          <td class="col-ours"><span class="badge-ok">✅ ベーシック月1回／プロ月3回</span></td>
-          <td><span class="badge-ok">✅ 制限なし</span></td>
-          <td><span class="badge-ok">✅ 制限なし</span></td>
+          <td class="col-ours"><span class="badge-ok">✅ 自動</span></td>
+          <td><span class="badge-ok">✅</span></td>
+          <td><span class="badge-ok">✅</span></td>
+        </tr>
+        <tr>
+          <td>設定できる配信の組み合わせ数<br><small>誕生日・リマインド・キャンペーン等を自由に組み合わせ</small></td>
+          <td class="col-ours"><span class="badge-ok">✅ ベーシック：最大7種<br>プロ：最大10種</span></td>
+          <td><span class="badge-ok">✅ 制限なし<br><small>（ツール機能による・追加料金あり）</small></span></td>
+          <td><span class="badge-ok">✅ 制限なし<br><small>（ツール機能による・追加料金あり）</small></span></td>
         </tr>
         <tr>
           <td>ステップ配信（時系列・固定シナリオ）<br><small>例：登録後1日後・3日後・7日後に自動送信</small></td>
@@ -938,7 +1047,7 @@
           <td><span class="badge-ok">✅ 高機能</span></td>
         </tr>
         <tr>
-          <td>行動分岐ステップ配信<br><small>例：ボタンを押した人だけ別シナリオへ分岐</small></td>
+          <td>行動分岐ステップ配信<br><small>例：ボタンを押した人だけ別シナリオへ分岐<br>オンラインサロン等で多用される高度な自動化</small></td>
           <td class="col-ours"><span class="badge-ng">❌ 非対応</span><br><small>これが必要ならLステップが正解</small></td>
           <td><span class="badge-ok">✅ 最高クラス</span></td>
           <td><span class="badge-ok">✅ 対応</span></td>
@@ -950,6 +1059,7 @@
           <td><span class="badge-ok">✅</span></td>
         </tr>
 
+        <!-- AI・自動返答 -->
         <tr class="category-row"><td colspan="4">🤖 AI・自動返答</td></tr>
         <tr>
           <td>FAQ自動返答（Gemini AI）<br><small>営業時間・メニュー・駐車場等の問い合わせ</small></td>
@@ -958,6 +1068,7 @@
           <td><span class="badge-tri">△ 別途設定・費用要</span></td>
         </tr>
 
+        <!-- データ・運用 -->
         <tr class="category-row"><td colspan="4">📊 データ・運用</td></tr>
         <tr>
           <td>顧客データ保有</td>
@@ -1063,6 +1174,45 @@
   </div>
 </div>
 
+<!-- ===== 報酬サマリー ===== -->
+<div class="slide">
+  <div class="slide-header">
+    <span>パートナー報酬について</span>
+    <span class="slide-num" style="background:rgba(255,255,255,0.15); padding:2px 10px; border-radius:10px;">報酬</span>
+  </div>
+  <div class="slide-body">
+    <div class="section-badge">REWARD</div>
+    <div class="slide-title">紹介だけで報酬が発生。<br>納品・保守・対応はすべて藤田が担当。</div>
+    <div class="slide-subtitle">パートナーの仕事は「つなぐ」だけ。構築・技術的な対応は一切不要です。</div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:24px;">
+      <div style="background:var(--brown-pale); border-radius:12px; padding:24px; text-align:center;">
+        <div style="font-size:12px; color:var(--brown); font-weight:700; letter-spacing:0.08em; margin-bottom:8px;">ベーシック 成約時</div>
+        <div style="font-size:13px; color:#888; margin-bottom:4px;">200,000円 × 20%</div>
+        <div style="font-size:36px; font-weight:900; color:var(--brown-dark); line-height:1;">40,000<span style="font-size:16px;">円</span></div>
+        <div style="font-size:11px; color:#888; margin-top:4px;">1件の紹介で</div>
+      </div>
+      <div style="background:var(--brown); border-radius:12px; padding:24px; text-align:center; color:#fff;">
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.08em; margin-bottom:8px; opacity:0.8;">プロ 成約時</div>
+        <div style="font-size:13px; margin-bottom:4px; opacity:0.7;">500,000円 × 20%</div>
+        <div style="font-size:36px; font-weight:900; line-height:1;">100,000<span style="font-size:16px;">円</span></div>
+        <div style="font-size:11px; margin-top:4px; opacity:0.7;">1件の紹介で</div>
+      </div>
+    </div>
+
+    <div style="background:#F7F7F7; border-radius:8px; padding:14px 20px; font-size:12px; color:#666; line-height:1.9; margin-bottom:20px;">
+      ✅ 初期構築費の入金確認後、翌月末に振込<br>
+      ✅ 月額保守費のシェアなし。報酬は紹介成約時の一回のみ<br>
+      ✅ ヒアリング・商談・契約・納品はすべて藤田が対応
+    </div>
+
+    <div style="text-align:center;">
+      <a href="partner_contract.html" style="display:inline-block; background:var(--brown); color:#fff; font-size:14px; font-weight:700; padding:12px 32px; border-radius:8px; text-decoration:none; letter-spacing:0.05em;">📄 報酬・契約の詳細を見る →</a>
+      <div style="font-size:11px; color:#999; margin-top:8px;">紹介フロー・FAQ・サポート範囲の詳細はこちら</div>
+    </div>
+  </div>
+</div>
+
 <!-- ===== スライド10: CTA ===== -->
 <div class="slide">
   <div class="slide-header">
@@ -1076,9 +1226,9 @@
       補助金の見立てと概算見積もりをすぐにお出しします。
     </div>
     <div class="cta-card">
-      <div class="cta-name">藤田 正伸</div>
+      <div class="cta-name">合同会社TI　藤田 正伸</div>
       <div class="cta-info">
-        📧 masanobu@60p-net.com
+        <a href="https://forms.gle/MYp7gMeAYvQMoKjc6" target="_blank" style="display:inline-block;margin-top:8px;padding:12px 28px;background:#06C755;color:#fff;border-radius:8px;font-weight:700;font-size:16px;text-decoration:none;">📝 パートナー申し込みフォーム</a>
       </div>
     </div>
   </div>

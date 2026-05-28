@@ -32,7 +32,7 @@
     margin: 0 auto 40px;
     background: var(--white);
     border-radius: 12px;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     page-break-after: always;
   }
@@ -628,8 +628,25 @@
     .slide { margin-bottom: 0; box-shadow: none; page-break-after: always; }
   }
 
+  /* ===== テーブル横スクロールラッパー ===== */
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px;
+  }
+  .table-scroll .feature-table,
+  .table-scroll .price-table {
+    margin-bottom: 0;
+    min-width: 560px;
+  }
+
   @media (max-width: 640px) {
-    .slide-body { padding: 28px 20px; }
+    .slide-body { padding: 20px 14px; }
+    .slide-title { font-size: 20px; }
+    .slide-subtitle { font-size: 13px; }
+    .cover-title { font-size: 26px; }
+    .cover-desc { font-size: 13px; }
+    .cover-tag { font-size: 11px; padding: 4px 10px; }
     .worry-grid { grid-template-columns: 1fr; }
     .phone-flow { grid-template-columns: 1fr 1fr; }
     .phone-arrow { display: none; }
@@ -639,6 +656,8 @@
     .store-flow { grid-template-columns: 1fr; }
     .line-screenshots { grid-template-columns: 1fr; }
     .auto-list { grid-template-columns: 1fr; }
+    .plan-grid { grid-template-columns: 1fr; }
+    .reward-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -937,6 +956,7 @@
     <div class="slide-title">月額30,000円〜 vs 月額5,000円〜。<br>何ができて、何ができないか。正直に比較します。</div>
     <div class="slide-subtitle">「安いだけ」ではない。このシステムが得意な領域に特化しているから安い。</div>
 
+    <div class="table-scroll">
     <table class="feature-table">
       <thead>
         <tr>
@@ -1090,6 +1110,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <div class="price-note">
       <strong>このシステムが安い理由：</strong>①Googleの無料インフラで動くためサーバー代ゼロ ②予約・配信・顧客管理に特化し使わない機能の維持費を払わせない ③行動分岐等の高度なシナリオ設計は非対応のため保守コストが低い<br>

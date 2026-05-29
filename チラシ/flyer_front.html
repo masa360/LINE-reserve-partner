@@ -26,12 +26,12 @@
     /* ===== ヒーロー（上半分）===== */
     .hero {
       background: linear-gradient(160deg, #00b900 0%, #00c853 60%, #00e676 100%);
-      flex: 0 0 52%;
+      flex: 0 0 56%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px 60px 32px;
+      padding: 32px 60px 24px;
       position: relative;
       text-align: center;
     }
@@ -68,7 +68,7 @@
       font-size: 15px;
       font-weight: 500;
       line-height: 1.7;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
 
     /* 価格バッジ */
@@ -176,39 +176,51 @@
       line-height: 1.55;
     }
 
-    /* ===== CTA ===== */
-    .cta {
-      background: linear-gradient(135deg, #00b900, #00e676);
-      padding: 16px 40px;
+    /* ===== ヒーロー内CTA ===== */
+    .hero-cta {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0;
+      gap: 16px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
-    .cta-left h3 { color: #fff; font-size: 14px; font-weight: 900; margin-bottom: 3px; }
-    .cta-left p  { color: rgba(255,255,255,0.85); font-size: 10px; line-height: 1.6; }
-    .cta-btn {
+    .hero-cta-qr {
+      text-align: center;
+    }
+    .hero-cta-qr img {
+      width: 64px;
+      height: 64px;
+      border-radius: 6px;
+      background: #fff;
+      padding: 4px;
+      display: block;
+    }
+    .hero-cta-qr span {
+      font-size: 8px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 700;
+      margin-top: 2px;
+      display: block;
+    }
+    .hero-cta-btn {
       display: inline-block;
       background: #fff;
       color: #00b900;
       font-size: 13px;
       font-weight: 800;
-      padding: 11px 26px;
+      padding: 11px 22px;
       border-radius: 30px;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       white-space: nowrap;
-      flex-shrink: 0;
     }
-
-    .page-footer {
-      background: #f2f2f2;
-      border-top: 1px solid #e0e0e0;
-      padding: 7px 40px;
-      font-size: 11px;
-      color: #aaa;
-      flex-shrink: 0;
-      text-align: right;
+    .hero-cta-note {
+      font-size: 9.5px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 8px;
+      line-height: 1.6;
+      text-align: center;
     }
 
     @media print {
@@ -249,6 +261,19 @@
         <div class="pb-unit">円（税別）</div>
       </div>
     </div>
+
+    <!-- ヒーロー内CTA -->
+    <div class="hero-cta">
+      <div class="hero-cta-qr">
+        <img src="../images/M_gainfriends_2dbarcodes_GW.png" alt="LINE友だち追加QR">
+        <span>QRで友だち追加</span>
+      </div>
+      <a href="https://lin.ee/OIsoJvM" class="hero-cta-btn">📱 LINEで友だち追加</a>
+    </div>
+    <p class="hero-cta-note">
+      友だち追加後、説明資料・デモ体験・無料相談メニューが見れます。補助金相談も無料。<br>
+      こちらから営業メールを送ることはないのでご安心ください。
+    </p>
   </div>
 
   <!-- ウェーブ -->
@@ -301,25 +326,11 @@
           <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span>補助金申請サポートは無料</li>
         </ul>
       </div>
-      <div class="block-accent">裏面に機能・料金の詳細をまとめています。</div>
+      <div class="block-accent">裏面に概要あります！気になる方はLINE登録で詳細が見れます。</div>
     </div>
 
   </div>
 
-  <!-- CTA -->
-  <div class="cta">
-    <div class="cta-left">
-      <h3>まずはデモを体験してください！LINEを友だち追加</h3>
-      <p>ペットサロン・美容室・ネイル・パーソナルトレーニング・社交ダンス教室など幅広く対応。<br>友だち追加後、詳しい説明資料・デモ体験・無料相談メニューが見れます。補助金相談も無料です。</p>
-    </div>
-    <div style="display:flex; align-items:center; gap:14px; flex-shrink:0; flex-wrap:wrap; justify-content:center;">
-      <div style="text-align:center;">
-        <img src="../images/M_gainfriends_2dbarcodes_GW.png" alt="LINE友だち追加QR" style="width:72px; height:72px; border-radius:6px; background:#fff; padding:4px; display:block;">
-        <div style="font-size:9px; color:#FFD700; margin-top:3px; font-weight:700;">📱 LINE友だち追加</div>
-      </div>
-      <a href="https://lin.ee/OIsoJvM" class="cta-btn">📱 LINEで友だち追加</a>
-    </div>
-  </div>
 
 </div>
 

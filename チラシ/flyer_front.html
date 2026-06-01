@@ -107,12 +107,12 @@
 
     .ratio-badge {
       position: absolute;
-      top: 24px;
-      right: 36px;
+      top: 20px;
+      right: 32px;
       background: #fff;
       border-radius: 50%;
-      width: 80px;
-      height: 80px;
+      width: 92px;
+      height: 92px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -120,8 +120,55 @@
       box-shadow: 0 4px 14px rgba(0,0,0,0.15);
       text-align: center;
     }
-    .ratio-badge .r-num  { font-size: 18px; font-weight: 900; color: #00b900; line-height: 1; }
-    .ratio-badge .r-unit { font-size: 8px; color: #555; font-weight: 700; }
+    .ratio-badge .r-num  { font-size: 22px; font-weight: 900; color: #00b900; line-height: 1.1; }
+    .ratio-badge .r-unit { font-size: 9px; color: #555; font-weight: 700; }
+
+    /* ===== ヒーロー内CTA ===== */
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-cta-qr { text-align: center; }
+    .hero-cta-qr img {
+      width: 64px;
+      height: 64px;
+      border-radius: 6px;
+      background: #fff;
+      padding: 4px;
+      display: block;
+    }
+    .hero-cta-qr span {
+      font-size: 8px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 700;
+      margin-top: 2px;
+      display: block;
+    }
+    .hero-cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: #00b900;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 11px 22px;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      white-space: nowrap;
+    }
+    .hero-cta-note {
+      font-size: 11px;
+      color: #fff;
+      font-weight: 600;
+      margin-top: 8px;
+      line-height: 1.7;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    }
 
     /* ウェーブ */
     .wave {
@@ -243,68 +290,6 @@
       color: #1a6b3a;
       font-weight: 900;
       line-height: 1.6;
-    }
-
-    /* 右カラム最下部：補助金 */
-    .subsidy-bar {
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, #fffde7, #fff9e6);
-      border-top: 1px solid #ffe082;
-      padding: 10px 18px;
-      font-size: 11px;
-      line-height: 1.7;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    /* ===== ヒーロー内CTA ===== */
-    .hero-cta {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-top: 22px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .hero-cta-qr {
-      text-align: center;
-    }
-    .hero-cta-qr img {
-      width: 64px;
-      height: 64px;
-      border-radius: 6px;
-      background: #fff;
-      padding: 4px;
-      display: block;
-    }
-    .hero-cta-qr span {
-      font-size: 8px;
-      color: rgba(255,255,255,0.85);
-      font-weight: 700;
-      margin-top: 2px;
-      display: block;
-    }
-    .hero-cta-btn {
-      display: inline-block;
-      background: #fff;
-      color: #00b900;
-      font-size: 13px;
-      font-weight: 800;
-      padding: 11px 22px;
-      border-radius: 30px;
-      text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      white-space: nowrap;
-    }
-    .hero-cta-note {
-      font-size: 11px;
-      color: #fff;
-      font-weight: 600;
-      margin-top: 8px;
-      line-height: 1.7;
-      text-align: center;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.25);
     }
 
     @media print {

@@ -130,50 +130,132 @@
       margin-top: -2px;
     }
 
-    /* ===== 下半分：3ブロック ===== */
+    /* ===== 下半分：2カラム ===== */
     .bottom {
       flex: 1;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 220px 1fr;
       gap: 0;
-      padding: 0 0 0;
     }
 
-    .block {
-      padding: 16px 22px 20px;
-      border-right: 1px solid #f0f0f0;
+    /* 左：問題提起 */
+    .block-left {
+      padding: 20px 20px 20px 24px;
+      border-right: 2px solid #e8e8e8;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
     }
-    .block:last-child { border-right: none; }
-
-    .block-icon { font-size: 28px; margin-bottom: 10px; }
-    .block-title {
+    .block-left-title {
       font-size: 15px;
       font-weight: 900;
-      line-height: 1.35;
-      margin-bottom: 10px;
+      line-height: 1.4;
       color: #1a1a1a;
+      margin-bottom: 14px;
     }
-    .block-title span { color: #00b900; }
-    .block-body {
-      font-size: 11.5px;
-      color: #444;
-      line-height: 1.75;
-      flex: 1;
-    }
-    .block-body strong { color: #1a1a1a; }
+    .block-left-title span { color: #00b900; }
 
-    .block-accent {
-      margin-top: 12px;
+    .ng-list { list-style: none; display: grid; gap: 7px; margin-bottom: 16px; }
+    .ng-list li { font-size: 12px; color: #aaa; display: flex; gap: 7px; align-items: center; }
+    .ng-list li::before { content: '✗'; color: #ccc; font-weight: 700; font-size: 13px; }
+
+    .ok-list { list-style: none; display: grid; gap: 8px; }
+    .ok-list li {
+      font-size: 14px;
+      font-weight: 800;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ok-list li::before { content: '✓'; color: #00b900; font-weight: 900; font-size: 15px; }
+
+    .block-accent-left {
+      margin-top: 14px;
       background: #f0fff4;
       border-left: 3px solid #00b900;
       border-radius: 0 6px 6px 0;
       padding: 8px 10px;
-      font-size: 11px;
+      font-size: 10.5px;
       color: #1a6b3a;
       font-weight: 700;
       line-height: 1.55;
+    }
+
+    /* 右：カテゴリ別機能 */
+    .block-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .feature-col {
+      padding: 18px 16px 16px;
+      border-right: 1px solid #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .feature-col:last-child { border-right: none; }
+
+    /* 左ブロックからの矢印 */
+    .feature-col:first-child::before {
+      content: '→';
+      position: absolute;
+      left: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      font-weight: 900;
+      color: #00b900;
+    }
+
+    .feature-cat {
+      font-size: 13px;
+      font-weight: 900;
+      color: #00b900;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-bottom: 1px solid #d0eed8;
+      padding-bottom: 7px;
+    }
+    .feature-list { list-style: none; display: grid; gap: 7px; flex: 1; }
+    .feature-list li {
+      font-size: 12px;
+      color: #333;
+      line-height: 1.5;
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+    .feature-list li::before { content: '›'; color: #00b900; font-weight: 900; font-size: 14px; flex-shrink: 0; }
+    .feature-list li.dim { color: #aaa; font-size: 11px; }
+    .feature-list li.dim::before { color: #ccc; }
+
+    .feature-accent {
+      margin-top: 10px;
+      background: #f0fff4;
+      border-left: 3px solid #00b900;
+      border-radius: 0 6px 6px 0;
+      padding: 7px 9px;
+      font-size: 10px;
+      color: #1a6b3a;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    /* 右カラム最下部：補助金 */
+    .subsidy-bar {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #fffde7, #fff9e6);
+      border-top: 1px solid #ffe082;
+      padding: 10px 18px;
+      font-size: 11px;
+      line-height: 1.7;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     /* ===== ヒーロー内CTA ===== */
@@ -284,53 +366,60 @@
     <path d="M0,0 C200,48 594,48 794,0 L794,0 L0,0 Z" fill="#00c853"/>
   </svg>
 
-  <!-- 3ブロック -->
+  <!-- 下半分 -->
   <div class="bottom">
 
-    <div class="block">
-      <div class="block-title">使っていない<span>8割</span>に<br>お金を払っていませんか？</div>
-      <div class="block-body">
-        <ul style="list-style:none; display:grid; gap:7px;">
-          <li style="display:flex; gap:8px;"><span style="color:#ccc; font-weight:700;">✗</span>複雑なシナリオ設計</li>
-          <li style="display:flex; gap:8px;"><span style="color:#ccc; font-weight:700;">✗</span>行動分岐・タグ管理</li>
-          <li style="display:flex; gap:8px;"><span style="color:#ccc; font-weight:700;">✗</span>大規模な一斉配信</li>
-          <li style="display:flex; gap:8px; margin-top:4px;"><span style="color:#00b900; font-weight:700;">✓</span><strong>予約受付</strong></li>
-          <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span><strong>リマインド送信</strong></li>
-          <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span><strong>リピート促進</strong></li>
+    <!-- 左：問題提起 -->
+    <div class="block-left">
+      <div>
+        <div class="block-left-title">使っていない<span>8割</span>に<br>お金を払っていませんか？</div>
+        <ul class="ng-list">
+          <li>複雑なシナリオ設計</li>
+          <li>行動分岐・タグ管理</li>
+          <li>大規模な一斉配信</li>
         </ul>
+        <ul class="ok-list">
+          <li>予約受付</li>
+          <li>リマインド</li>
+          <li>リピート促進</li>
+        </ul>
+        <div class="block-accent-left">必要な2割に絞れば、相場の1/5以下のコストで回る。</div>
       </div>
-      <div class="block-accent">必要な2割に絞れば、相場の1/5以下のコストで回る。</div>
     </div>
 
-    <div class="block">
-      <div class="block-title"><span>自動化できる機能</span>一覧</div>
-      <div class="block-body">
-        <ul style="list-style:none; display:grid; gap:6px;">
-          <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span>LINEから24時間予約受付</li>
-          <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span>来店前リマインド自動送信</li>
-          <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span>来店後サンキュークーポン配信</li>
-          <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span>誕生日メッセージ自動送信</li>
-          <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span>月次キャンペーン配信</li>
-          <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span>休眠客への呼び戻しメッセージ</li>
-          <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span>Googleカレンダー自動連携</li>
-          <li style="display:flex; gap:8px; color:#888;"><span style="color:#aaa; font-weight:700;">✓</span>AI FAQ自動返答（プロプランのみ）</li>
-        </ul>
-      </div>
-      <div class="block-accent">一度設定すれば全部自動。カレンダーで予約確認するだけ。顧客へのメッセージは自動で回ります。</div>
-    </div>
+    <!-- 右：カテゴリ別機能 -->
+    <div class="block-right">
 
-    <div class="block">
-      <div class="block-title">補助金・助成金活用で<br><span>実質7万円〜導入事例あり</span></div>
-      <div class="block-body">
-        <ul style="list-style:none; display:grid; gap:7px;">
-          <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span>初期費用 200,000円〜</li>
-          <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span>月額 5,000円・保守込み</li>
-          <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span>小規模事業者持続化補助金 最大50万</li>
-          <li style="display:flex; gap:8px;"><span style="color:#00b900; font-weight:700;">✓</span>補助金申請、書類まで無料で伴走</li>
+      <div class="feature-col">
+        <div class="feature-cat">📅 予約受付</div>
+        <ul class="feature-list">
+          <li>LINEから24時間予約</li>
+          <li>スタッフ・日時を選んで完結</li>
+          <li>Googleカレンダー自動連携</li>
+          <li>電話予約もカレンダーで一元管理</li>
         </ul>
       </div>
-      <div class="block-accent">裏面に概要あります！気になる方はLINE登録で詳細が見れます。</div>
-    </div>
+
+      <div class="feature-col">
+        <div class="feature-cat">🔔 リマインド・フォロー</div>
+        <ul class="feature-list">
+          <li>来店前リマインド自動送信</li>
+          <li>来店後サンキュークーポン</li>
+          <li>誕生日メッセージ（月初＋当日）</li>
+        </ul>
+      </div>
+
+      <div class="feature-col">
+        <div class="feature-cat">📣 リピート促進</div>
+        <ul class="feature-list">
+          <li>休眠客への呼び戻しメッセージ</li>
+          <li>月次キャンペーン配信</li>
+          <li class="dim">AI FAQ自動返答（プロのみ）</li>
+        </ul>
+        <div class="feature-accent">一度設定で全自動。カレンダーで予約確認するだけ。</div>
+      </div>
+
+    </div><!-- /block-right -->
 
   </div>
 

@@ -85,7 +85,14 @@
       box-shadow: 0 6px 24px rgba(0,0,0,0.15);
     }
     .price-box .pb-label { font-size: 11px; color: #888; font-weight: 600; margin-bottom: 2px; }
-    .price-box .pb-num   { font-size: 44px; font-weight: 900; color: #00b900; line-height: 1; }
+    .price-box .pb-num   { font-size: 52px; font-weight: 900; color: #00b900; line-height: 1; }
+    .price-box { position: relative; }
+    .price-box .zero-pop {
+      position: absolute; top: -12px; right: -8px;
+      background: #ff5252; color: #fff; font-size: 10px; font-weight: 900;
+      padding: 2px 9px; border-radius: 11px; transform: rotate(8deg);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
     .price-box .pb-unit  { font-size: 13px; color: #555; margin-top: 2px; }
 
     .vs-arrow {
@@ -120,7 +127,8 @@
       box-shadow: 0 4px 14px rgba(0,0,0,0.15);
       text-align: center;
     }
-    .ratio-badge .r-num  { font-size: 22px; font-weight: 900; color: #00b900; line-height: 1.1; }
+    .ratio-badge .r-num  { font-size: 24px; font-weight: 900; color: #00b900; line-height: 1; }
+    .ratio-badge .r-num small { font-size: 13px; }
     .ratio-badge .r-unit { font-size: 9px; color: #555; font-weight: 700; }
 
     /* ===== ヒーロー内CTA ===== */
@@ -160,8 +168,32 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       white-space: nowrap;
     }
+    /* 補助金 吹き出し */
+    .subsidy-bubble {
+      position: relative;
+      display: inline-block;
+      background: #fff3cd;
+      color: #8a6d00;
+      font-size: 15px;
+      font-weight: 900;
+      padding: 9px 20px;
+      border-radius: 24px;
+      margin-top: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    }
+    .subsidy-bubble::after {
+      content: '';
+      position: absolute;
+      top: -9px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+      border-bottom: 9px solid #fff3cd;
+    }
+
     .hero-cta-note {
-      font-size: 11px;
+      font-size: 15px;
       color: #fff;
       font-weight: 600;
       margin-top: 8px;
@@ -222,11 +254,11 @@
       background: #f0fff4;
       border-left: 3px solid #00b900;
       border-radius: 0 6px 6px 0;
-      padding: 8px 10px;
-      font-size: 10.5px;
+      padding: 10px 12px;
+      font-size: 12.5px;
       color: #1a6b3a;
       font-weight: 700;
-      line-height: 1.55;
+      line-height: 1.65;
     }
 
     /* 右：カテゴリ別機能 */
@@ -292,6 +324,26 @@
       line-height: 1.6;
     }
 
+    /* よくあるミス（手動だと起きる失敗） */
+    .feature-miss {
+      margin-top: auto;
+      background: #fff5f5;
+      border-left: 3px solid #ff8a80;
+      border-radius: 0 6px 6px 0;
+      padding: 8px 10px;
+      font-size: 10.5px;
+      color: #b03a3a;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+    .feature-miss .miss-label {
+      display: block;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      color: #e57373;
+      margin-bottom: 3px;
+    }
+
     @media print {
       body { background: #fff; }
       .page { box-shadow: none; }
@@ -305,17 +357,19 @@
   <!-- ヒーロー -->
   <div class="hero">
     <div class="ratio-badge">
-      <span class="r-unit">月額</span>
-      <span class="r-num">5,000円</span>
-      <span class="r-unit">（税別）</span>
+      <span class="r-unit">買い切り後はずっと</span>
+      <span class="r-num">月額<small>0</small>円</span>
+      <span class="r-unit"></span>
     </div>
 
-    <div class="hero-label">LINE × 予約 × 自動化</div>
+    <div class="hero-label">LINE × リピーター × 売上アップ</div>
 
-    <h1>高いツールの<em>8割</em>は、<br>使わずに終わります。</h1>
+    <h1>リピーターこそ、<em>最強の売上。</em><br>LINEが自動で連れ戻す。</h1>
 
     <p class="hero-sub">
-      設定は一度だけ。あとは全部LINEが動きます。<br>手間もコストも削って、リピーターを守ります。
+      新規集客は、常連を保つ<strong style="background:rgba(255,255,255,0.2);border-radius:5px;padding:0 6px;">5倍</strong>のコスト。<br>
+      「また来たい」をLINEが自動でつくり、売上を伸ばします。<br>
+      <strong>補助金で賢く買い切り。あとは、ずーっと0円。</strong>
     </p>
 
     <div class="price-hero">
@@ -326,9 +380,10 @@
       </div>
       <div class="vs-arrow">→</div>
       <div class="price-box">
+        <span class="zero-pop">ずっと無料</span>
         <div class="pb-label">このシステム 月額</div>
-        <div class="pb-num">5,000</div>
-        <div class="pb-unit">円（税別）</div>
+        <div class="pb-num">0</div>
+        <div class="pb-unit">円（買い切り後）</div>
       </div>
     </div>
 
@@ -338,11 +393,13 @@
         <img src="../images/M_gainfriends_2dbarcodes_GW.png" alt="LINE友だち追加QR">
         <span>QRで友だち追加</span>
       </div>
-      <a href="https://lin.ee/OIsoJvM" class="hero-cta-btn">📱 LINEで友だち追加</a>
+      <a href="https://lin.ee/OIsoJvM" class="hero-cta-btn">📱 lineで完結！デモはこちら</a>
     </div>
+    <div class="subsidy-bubble">🏛️ 補助金無料相談もできます</div>
+
     <p class="hero-cta-note">
-      友だち追加後、説明資料・デモ体験・無料相談メニューが見れます。補助金相談も無料。<br>
-      こちらから営業メールを送ることはないのでご安心ください。
+      友だち追加後、説明資料・デモ体験・無料相談メニューが見れます。<br>
+      <span style="background:rgba(255,255,255,0.95); color:#1a8a3a; font-weight:800; padding:2px 8px; border-radius:5px;">こちらから営業メールを送ることはないのでご安心ください。</span>
     </p>
   </div>
 
@@ -357,18 +414,18 @@
     <!-- 左：問題提起 -->
     <div class="block-left">
       <div>
-        <div class="block-left-title">使っていない<span>8割</span>に<br>お金を払っていませんか？</div>
+        <div class="block-left-title">売上の<span>8割</span>は、<br>常連さんが作っている。</div>
         <ul class="ng-list">
-          <li>複雑なシナリオ設計</li>
-          <li>行動分岐・タグ管理</li>
-          <li>大規模な一斉配信</li>
+          <li>気づけば常連が来ない</li>
+          <li>お礼や案内は後回し</li>
+          <li>新規集客にばかり出費</li>
         </ul>
         <ul class="ok-list">
-          <li>予約受付</li>
-          <li>リマインド</li>
-          <li>リピート促進</li>
+          <li>来店後フォロー</li>
+          <li>誕生日・記念日配信</li>
+          <li>休眠客の呼び戻し</li>
         </ul>
-        <div class="block-accent-left">必要な2割に絞れば、相場の1/5以下のコストで回る。</div>
+        <div class="block-accent-left">常連の維持コストは、新規獲得の約1/5。<br>リピーターこそ、利益を支える。<br><span style="font-size:10px; color:#5a8a6a; font-weight:600;">（出典：Bain &amp; Company）</span></div>
       </div>
     </div>
 
@@ -383,31 +440,48 @@
           <li>Googleカレンダー自動連携</li>
           <li>電話予約もカレンダーで一元管理</li>
         </ul>
+        <div class="feature-miss">
+          <span class="miss-label">⚠ よくあるミス</span>
+          手作業の予約管理は時間がかかり、記入漏れ・ダブルブッキングも。
+        </div>
       </div>
 
       <div class="feature-col">
-        <div class="feature-cat">🔔 リマインド・フォロー</div>
+        <div class="feature-cat" style="display:block;">🔔 リマインド・フォロー<span style="display:block; font-size:9px; color:#888; font-weight:600; margin-top:2px;">（カスタマイズ可能）</span></div>
         <ul class="feature-list">
           <li>来店前リマインド自動送信</li>
           <li>来店後サンキュークーポン</li>
           <li>誕生日メッセージ（月初＋当日）</li>
         </ul>
+        <div class="feature-miss">
+          <span class="miss-label">⚠ 配信タイミングで結果は激変</span>
+          <span style="color:#c0392b;">✗ 夜10時にホルモンセット割引 → 逆効果</span><br>
+          <span style="color:#1a6b3a;">✓ 金曜の夕方5時半に定期配信 → 効果大</span>
+        </div>
       </div>
 
       <div class="feature-col">
-        <div class="feature-cat">📣 リピート促進</div>
+        <div class="feature-cat" style="display:block;">📣 リピート促進<span style="display:block; font-size:9px; color:#888; font-weight:600; margin-top:2px;">（カスタマイズ可能）</span></div>
         <ul class="feature-list">
           <li>休眠客への呼び戻しメッセージ</li>
           <li>月次キャンペーン配信</li>
           <li class="dim">AI FAQ自動返答（プロのみ）</li>
         </ul>
-        <div class="feature-accent">最初の設定さえすれば、あとは全自動。カレンダーで予約確認するだけ。</div>
+        <div class="feature-miss">
+          <span class="miss-label">⚠ よくあるミス</span>
+          週1以上の送りすぎでブロック。大切な常連まで離れてしまう。
+        </div>
+        <div class="feature-accent">設定さえすれば、最適なタイミングで全自動。あなたはカレンダーを見るだけ。</div>
       </div>
 
     </div><!-- /block-right -->
 
   </div>
 
+  <!-- 社名フッター -->
+  <div style="flex-shrink:0; text-align:center; padding:8px 0; font-size:10px; color:#888; border-top:1px solid #eee;">
+    cvilz株式会社　担当　藤田 正伸
+  </div>
 
 </div>
 
